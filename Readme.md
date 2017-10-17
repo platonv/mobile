@@ -11,3 +11,8 @@ Users will be able to:
 - Create polls per group
 - See where a group ate lately
 
+Admins will be able to:
+- Create accounts
+- Ban inappropriate accounts
+
+
