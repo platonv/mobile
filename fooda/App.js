@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, StatusBar } from 'react-native'
 
 import Login from './src/pages/login'
+import Restaurants from './src/pages/restaurants'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" style={styles.toolbar} />
-        <Login />
+        {/* <Login /> */}
+        <Restaurants />
       </View>
     )
   }
