@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, StatusBar } from 'react-native'
+import { View, StyleSheet, Text, StatusBar, Button } from 'react-native'
 
 import Form from '../components/form'
 
@@ -12,10 +12,18 @@ export default class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Fooda</Text>
-        <Form />
+        <Form
+          onLogin={() => {
+            this.props.navigation.navigate('RestaurantListPage')
+          }}
+        />
         <View style={styles.signupTextCont}>
           <Text style={styles.signupText}>Don't have an account yet?</Text>
           <Text style={styles.signupButton}>Sign-up</Text>
+          <Button
+            onPress={() => this.props.navigation.navigate('Email')}
+            title="Email"
+          />
         </View>
       </View>
     )

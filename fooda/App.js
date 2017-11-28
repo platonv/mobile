@@ -1,37 +1,33 @@
 import React from 'react'
 import { View, StyleSheet, Text, StatusBar } from 'react-native'
+import { StackNavigator } from 'react-navigation'
 
+import Email from './src/components/email'
 import Login from './src/pages/login'
-import Restaurants from './src/pages/restaurants'
+import RestaurantsList from './src/components/restaurants/restaurantsList'
+import RestaurantDetails from './src/pages/restaurantDetails'
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+global.restaurants = [
+  { name: 'Nuka Bistro' },
+  { name: 'Euphoria Biergarten' },
+  { name: 'Zama' },
+  { name: 'Cafe Francesca' },
+  { name: 'Napoca 15' },
+]
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" style={styles.toolbar} />
-        {/* <Login /> */}
-        <Restaurants />
-      </View>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#77bbe2',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+const App = StackNavigator({
+  Login: {
+    screen: Login,
   },
-  mainText: {
-    color: '#fff',
-    fontSize: 18,
+  RestaurantListPage: {
+    screen: RestaurantsList,
   },
-  toolbar: {
-    backgroundColor: '#02579B',
+  RestaurantPage: {
+    screen: RestaurantDetails,
+  },
+  Email: {
+    screen: Email,
   },
 })
+
+export default App

@@ -11,6 +11,11 @@ import {
 export default class Form extends React.Component {
   constructor(props) {
     super(props)
+    this.onLogin = this.onLogin.bind(this)
+  }
+
+  onLogin() {
+    console.log(this.props.onLogin())
   }
 
   render() {
@@ -31,7 +36,7 @@ export default class Form extends React.Component {
           placeholderTextColor="rgba(255,255,255,0.5)"
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={this.onLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>

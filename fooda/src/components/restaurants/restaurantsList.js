@@ -8,28 +8,25 @@ import {
   TouchableOpacity,
   StatusBar,
 } from 'react-native'
-import { Row } from './listRow'
 
-const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-
-export default class App extends React.Component {
+export default class RestaurantsList extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      dataSource: ds.cloneWithRows([
-        { name: 'Nuka Bistro' },
-        { name: 'Euphoria Biergarten' },
-        { name: 'Zama' },
-        { name: 'Cafe Francesca' },
-        { name: 'Napoca 15' },
-      ]),
-    }
+    let dataSource = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1.Id !== r2.Id,
+    })
+    this.state = { dataSource: dataSource.cloneWithRows(global.restaurants) }
+    this.openJob = this.openJob.bind(this)
+  }
+
+  openJob(job) {
+    this.props.navigation.navigate('RestaurantPage', job)
   }
 
   _renderRow(rowData) {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.openJob(rowData)}>
         <View style={styles.container}>
           <Text style={styles.textLeft}>{rowData.name}</Text>
           <Text style={styles.textRight}>5 votes</Text>
@@ -43,13 +40,10 @@ export default class App extends React.Component {
         <StatusBar />
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
+          renderRow={this._renderRow.bind(this)}
         />
       </View>
     )
-  }
-  openJob = job => {
-    alert('Selected job: ' + job.name)
   }
 }
 
