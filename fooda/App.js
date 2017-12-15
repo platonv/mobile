@@ -4,8 +4,11 @@ import { StackNavigator } from 'react-navigation'
 
 import Email from './src/components/email'
 import Login from './src/pages/login'
+import GroupsList from './src/components/groups/groupsList'
+import GroupDetails from './src/pages/groupDetails'
 import RestaurantsList from './src/components/restaurants/restaurantsList'
 import RestaurantDetails from './src/pages/restaurantDetails'
+import AddGroup from './src/pages/addGroup'
 
 global.restaurants = [
   { name: 'Nuka Bistro' },
@@ -24,6 +27,15 @@ const App = StackNavigator({
   },
   RestaurantPage: {
     screen: RestaurantDetails,
+  },
+  GroupsListPage: {
+    screen: GroupsList,
+  },
+  GroupDetailsPage: {
+    screen: GroupDetails,
+  },
+  AddGroupPage: {
+    screen: AddGroup,
   },
   Email: {
     screen: Email,

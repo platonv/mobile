@@ -14,7 +14,7 @@ export default class Login extends React.Component {
         <Text style={styles.titleText}>Fooda</Text>
         <Form
           onLogin={() => {
-            this.props.navigation.navigate('RestaurantListPage')
+            this.props.navigation.navigate('GroupsListPage')
           }}
         />
         <View style={styles.signupTextCont}>
