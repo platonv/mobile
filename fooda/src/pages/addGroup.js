@@ -7,6 +7,7 @@ import {
   StatusBar,
   TextInput,
   Button,
+  Picker,
 } from 'react-native'
 import GroupModel from '../models/group'
 import GroupService from '../services/groupService'
@@ -32,6 +33,7 @@ export default class RestaurantDetails extends React.Component {
     let group = this.props.navigation.state.params
     this.state = {
       name: '',
+      type: '',
     }
   }
 
@@ -64,6 +66,19 @@ export default class RestaurantDetails extends React.Component {
           title={'Save'}
           onPress={() => this.save(this.state.name)}
         />
+        <Picker
+          style={{
+            height: 40,
+            width: 100,
+          }}
+          selectedValue={this.state.type}
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({ type: itemValue })
+          }
+        >
+          <Picker.Item label="School" value="school" />
+          <Picker.Item label="Work" value="work" />
+        </Picker>
       </View>
     )
   }
